@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سیستم مدیریت کارآموزی</title>
-<link rel="stylesheet" href="all.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 </head>
 <body>
@@ -13,7 +13,7 @@
 
 <header class="header">
     <div class="logo">
-    <img src="61-612746_students-internship-symbol.png" alt="لوگو">
+<img src="{{ asset('images/61-612746_students-internship-symbol.png') }}" alt="لوگو">
     <span>IMS</span>
 </div>
 
@@ -24,19 +24,18 @@
     </div>
 
     <nav class="nav">
-        <a href="index.html">خانه</a>
-        <a href="features.html">ویژگی‌ها</a>
-        <a href="system.html">سیستم</a>
-        <a href="demo.html">ویدیو</a>
-        <a href="testimonials.html">نظریات</a>
-        <a href="faq.html">سوالات</a>
-        <a href="reports.html">ارسال گزارش</a>
+<a href="/features">ویژگی‌ها</a>
+<a href="/system">سیستم</a>
+<a href="/demo">ویدیو</a>
+<a href="/testimonials">نظریات</a>
+<a href="/faq">سوالات</a>
+<a href="/reports">ارسال گزارش</a>
         
     </nav>
 
     <div class="auth">
-        <a href="login.html">ورود</a>
-        <a href="signup.html">ثبت‌ نام</a>
+    <a href="/auth/login">ورود</a>
+    <a href="/signup">ثبت‌ نام</a>
     </div>
 </header>
 
@@ -44,7 +43,7 @@
     <div class="slider-container">
         
         <div class="slide">
-            <img src="5883b8f93619263b4610f9d41d836ba8.jpg" alt="کارآموزی 1">
+            <img src="{{ asset('images/5883b8f93619263b4610f9d41d836ba8.jpg') }}">
             <div class="slide-content">
                 <h1>سیستم مدیریت کارآموزی</h1>
                 <p>یک پلتفرم کامل برای مدیریت کارآموزی میان دانشجویان، شرکت‌ها و اساتید</p>
@@ -53,7 +52,7 @@
         </div>
         
         <div class="slide">
-            <img src="5135bb759d03f7cc990b9cd2c50de560.jpg" alt="کارآموزی 2">
+            <img src="{{ asset('images/5135bb759d03f7cc990b9cd2c50de560.jpg') }}">
             <div class="slide-content">
                 <h1>ارتباط مستقیم با شرکت‌ها</h1>
                 <p>فرصت‌های شغلی و کارآموزی را پیدا کنید</p>
@@ -62,7 +61,7 @@
         </div>
         
         <div class="slide">
-            <img src="088b200c344e66251201e6b2a078ac6e.jpg" alt="کارآموزی 3">
+           <img src="{{ asset('images/088b200c344e66251201e6b2a078ac6e.jpg') }}">
             <div class="slide-content">
                 <h1>گزارش‌دهی آنلاین</h1>
                 <p>ارسال و پیگیری گزارش‌های کارآموزی به صورت آنلاین</p>
@@ -71,7 +70,7 @@
         </div>
         
         <div class="slide">
-            <img src="886bd5cf2f06114fc79c47e989ee273e.jpg" alt="کارآموزی 4">
+            <img src="{{ asset('images/886bd5cf2f06114fc79c47e989ee273e.jpg') }}">
             <div class="slide-content">
                 <h1>ارزیابی هوشمند</h1>
                 <p>سیستم ارزیابی پیشرفته برای بهبود عملکرد</p>
@@ -180,16 +179,20 @@
                 می‌ توانید ثبت‌ نام کنید و گزارش ارسال نمایید.
             </p>
         </div>
+  
+<div class="video-box">
 
-        <div class="video-box">
-            <video controls>
-                <source src="5 نکته مهم درمورد کارآموزی  _ Five important Tips for Internship(720P_HD)_001_005.mp4" type="video/mp4">
-            </video>
-            <p class="views">
-            <i class="fas fa-eye"></i> 1,250 بازدید
-            </p>
-        
-        </div>
+    <video controls>
+        <source src="{{ asset('videos/5 نکته مهم درمورد کارآموزی  _ Five important Tips for Internship(720P_HD)_001_005.mp4') }}" type="video/mp4">
+
+        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+    </video>
+
+    <p class="views">
+        <i class="fas fa-eye"></i> 1,250 بازدید
+    </p>
+
+</div>
 
     </div>
 </section>
@@ -269,8 +272,8 @@
 
         <div class="footer-section">
             <h3>لینک‌ها</h3>
-            <a href="privacy.html">حریم خصوصی</a>
-            <a href="terms.html">شرایط استفاده</a>
+            <a href="/privacy">حریم خصوصی</a>
+            <a href="/terms">شرایط استفاده</a>
         
         </div>
 
@@ -282,11 +285,10 @@
 
 </footer>
 
-<script src="js/storage.js"></script>
-<script src="js/homepage.js"></script>
-<script src="js/api.js"></script>
-<script src="js/validation.js"></script>
-
+<script src="{{ asset('js/storage.js') }}"></script>
+<script src="{{ asset('js/homepage.js') }}"></script>
+<script src="{{ asset('js/api.js') }}"></script>
+<script src="{{ asset('js/validation.js') }}"></script>
 
 </body>
 </html>
