@@ -1,5 +1,10 @@
 <?php
-
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\InternshipController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -57,3 +62,10 @@ Route::get('/privacy', function () {
 Route::get('/terms', function () {
     return view('terms');
 });
+
+Route::resource('students', StudentController::class);
+Route::resource('companies', CompanyController::class);
+Route::resource('internships', InternshipController::class);
+Route::resource('applications', ApplicationController::class);
+Route::resource('reports', ReportController::class);
+Route::resource('users', UserController::class);
