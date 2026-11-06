@@ -9,11 +9,14 @@
 
     <h1>جزئیات دانشجو</h1>
 
-    <p>نام: احمد رضایی</p>
-    <p>ایمیل: ahmad@example.com</p>
-    <p>شماره تماس: 0700000000</p>
+    <p><strong>شماره ID:</strong> {{ $student['id'] }}</p>
+    <p><strong>نام:</strong> {{ $student['name'] }}</p>
+    <p><strong>ایمیل:</strong> {{ $student['email'] }}</p>
+    <p><strong>شماره تماس:</strong> {{ $student['phone'] }}</p>
 
-    <a href="/students">بازگشت به لیست</a>
+    <br>
+
+    <a href="{{ route('students.index') }}">بازگشت به لیست دانشجویان</a>
 
 </body>
 </html>

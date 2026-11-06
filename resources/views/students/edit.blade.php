@@ -7,30 +7,38 @@
 </head>
 <body>
 
-    <h1>ویرایش دانشجو</h1>
+    <h1>ویرایش اطلاعات دانشجو</h1>
 
-    <form>
+    <form action="{{ route('students.update', $student['id']) }}" method="POST">
+
+        @csrf
+        @method('PUT')
+
         <label>نام:</label>
-        <input type="text" value="احمد رضایی">
+        <input type="text" name="name"
+               value="{{ $student['name'] }}" required>
 
         <br><br>
 
         <label>ایمیل:</label>
-        <input type="email" value="ahmad@example.com">
+        <input type="email" name="email"
+               value="{{ $student['email'] }}" required>
 
         <br><br>
 
         <label>شماره تماس:</label>
-        <input type="text" value="0700000000">
+        <input type="text" name="phone"
+               value="{{ $student['phone'] }}" required>
 
         <br><br>
 
-        <button type="submit">ویرایش دانشجو</button>
+        <button type="submit">ذخیره تغییرات</button>
+
     </form>
 
     <br>
 
-    <a href="/students">بازگشت به لیست</a>
+    <a href="{{ route('students.index') }}">بازگشت به لیست</a>
 
 </body>
 </html>

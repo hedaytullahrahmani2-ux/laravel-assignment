@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -9,28 +10,32 @@
 
     <h1>ایجاد دانشجوی جدید</h1>
 
-    <form>
+    <form action="{{ route('students.store') }}" method="POST">
+
+        @csrf
+
         <label>نام:</label>
-        <input type="text">
+        <input type="text" name="name" required>
 
         <br><br>
 
         <label>ایمیل:</label>
-        <input type="email">
+        <input type="email" name="email" required>
 
         <br><br>
 
         <label>شماره تماس:</label>
-        <input type="text">
+        <input type="text" name="phone" required>
 
         <br><br>
 
         <button type="submit">ثبت دانشجو</button>
+
     </form>
 
     <br>
 
-    <a href="/students">بازگشت به لیست</a>
+    <a href="{{ route('students.index') }}">بازگشت به لیست</a>
 
 </body>
 </html>

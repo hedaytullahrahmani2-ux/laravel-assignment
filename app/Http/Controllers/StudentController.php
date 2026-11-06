@@ -2,40 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\JsonDatabase;
+use Illuminate\Http\Request;
+
 class StudentController extends Controller
 {
-    public function index()
+    private JsonDatabase $database;
+
+    public function __construct(JsonDatabase $database)
     {
-        return view('students.index');
+        $this->database = $database;
     }
 
+    // Show all students
+    public function index()
+    {
+        $students = $this->database->all('students');
+
+        return view('students.index', compact('students'));
+    }
+
+    // Show create form
     public function create()
     {
         return view('students.create');
     }
 
-    public function store()
+    // Save new student
+    public function store(Request $request)
     {
-        // فعلاً خالی است
+        $this->database->create(
+            'students',
+            $request->except(['_token', '_method'])
+        );
+
+        return redirect()->route('students.index');
     }
 
+    // Show one student
     public function show(string $student)
     {
-        return view('students.show');
+        $studentData = $this->database->find('students', (int) $student);
+
+        abort_if(!$studentData, 404);
+
+        return view('students.show', [
+            'student' => $studentData
+        ]);
     }
 
+    // Show edit form
     public function edit(string $student)
     {
-        return view('students.edit');
+        $studentData = $this->database->find('students', (int) $student);
+
+        abort_if(!$studentData, 404);
+
+        return view('students.edit', [
+            'student' => $studentData
+        ]);
     }
 
-    public function update(string $student)
+    // Update student
+    public function update(Request $request, string $student)
     {
-        // فعلاً خالی است
+        $this->database->update(
+            'students',
+            (int) $student,
+            $request->except(['_token', '_method'])
+        );
+
+        return redirect()->route('students.index');
     }
 
+    // Delete student
     public function destroy(string $student)
     {
-        // فعلاً خالی است
+        $this->database->delete('students', (int) $student);
+
+        return redirect()->route('students.index');
     }
 }
