@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -9,19 +10,37 @@
 
     <h1>جزئیات درخواست کارآموزی</h1>
 
-    <p><strong>نام دانشجو:</strong> احمد احمدی</p>
+    <p><strong>شماره ID:</strong> {{ $application['id'] }}</p>
 
-    <p><strong>نام کارآموزی:</strong> کارآموزی توسعه وب</p>
+    <p><strong>نام دانشجو:</strong>
+        {{ $application['student_name'] }}
+    </p>
 
-    <p><strong>نام شرکت:</strong> شرکت فناوری افغانستان</p>
+    <p><strong>عنوان کارآموزی:</strong>
+        {{ $application['internship_title'] }}
+    </p>
 
-    <p><strong>وضعیت درخواست:</strong> در حال بررسی</p>
+    <p><strong>ایمیل:</strong>
+        {{ $application['email'] }}
+    </p>
 
-    <p><strong>توضیحات:</strong> درخواست برای کارآموزی در بخش توسعه وب.</p>
+    <p><strong>شماره تماس:</strong>
+        {{ $application['phone'] }}
+    </p>
+
+    <p><strong>توضیحات:</strong>
+        {{ $application['description'] ?? '' }}
+    </p>
+
+    <p><strong>وضعیت درخواست:</strong>
+        {{ $application['status'] }}
+    </p>
 
     <br>
 
-    <a href="/applications">بازگشت به لیست</a>
+    <a href="{{ route('applications.index') }}">
+        بازگشت به لیست درخواست‌ها
+    </a>
 
 </body>
 </html>

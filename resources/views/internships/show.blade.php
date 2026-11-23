@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -7,19 +8,19 @@
 </head>
 <body>
 
-    <h1>جزئیات کارآموزی</h1>
+    <h1>جزئیات فرصت کارآموزی</h1>
 
-    <p><strong>عنوان کارآموزی:</strong> کارآموزی توسعه وب</p>
-
-    <p><strong>نام شرکت:</strong> شرکت فناوری افغانستان</p>
-
-    <p><strong>مدت کارآموزی:</strong> ۳ ماه</p>
-
-    <p><strong>توضیحات:</strong> کارآموزی برای دانشجویان رشته کامپیوتر</p>
+    <p><strong>ID:</strong> {{ $internship['id'] }}</p>
+    <p><strong>عنوان:</strong> {{ $internship['title'] }}</p>
+    <p><strong>نام شرکت:</strong> {{ $internship['company_name'] }}</p>
+    <p><strong>موقعیت:</strong> {{ $internship['location'] }}</p>
+    <p><strong>مدت:</strong> {{ $internship['duration'] }}</p>
+    <p><strong>توضیحات:</strong> {{ $internship['description'] }}</p>
+    <p><strong>وضعیت:</strong> {{ $internship['status'] }}</p>
 
     <br>
 
-    <a href="/internships">بازگشت به لیست</a>
+    <a href="{{ route('internships.index') }}">بازگشت به لیست</a>
 
 </body>
 </html>

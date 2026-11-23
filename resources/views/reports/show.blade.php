@@ -1,27 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جزئیات گزارش</title>
 </head>
 <body>
 
     <h1>جزئیات گزارش</h1>
 
-    <p><strong>نام دانشجو:</strong> احمد احمدی</p>
+    <p><strong>شماره ID:</strong> {{ $report['id'] }}</p>
 
-    <p><strong>عنوان گزارش:</strong> گزارش کارآموزی توسعه وب</p>
+    <p><strong>عنوان:</strong> {{ $report['title'] }}</p>
 
-    <p><strong>نام شرکت:</strong> شرکت فناوری افغانستان</p>
+    <p><strong>نوع گزارش:</strong> {{ $report['type'] }}</p>
 
-    <p><strong>تاریخ گزارش:</strong> ۱۴۰۵/۰۷/۱۵</p>
+    <p><strong>تاریخ:</strong> {{ $report['date'] }}</p>
 
-    <p><strong>توضیحات:</strong> در این دوره دانشجو با توسعه وب و طراحی سیستم آشنا شده است.</p>
+    <p><strong>تهیه‌کننده:</strong> {{ $report['generated_by'] }}</p>
+
+    <p><strong>توضیحات:</strong> {{ $report['description'] }}</p>
 
     <br>
 
-    <a href="/reports">بازگشت به لیست</a>
+    <a href="{{ route('reports.index') }}">
+        بازگشت به لیست گزارش‌ها
+    </a>
 
 </body>
 </html>

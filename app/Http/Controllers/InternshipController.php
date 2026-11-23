@@ -2,40 +2,90 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\JsonDatabase;
+use Illuminate\Http\Request;
+
 class InternshipController extends Controller
 {
-    public function index()
+    private JsonDatabase $database;
+
+    public function __construct(JsonDatabase $database)
     {
-        return view('internships.index');
+        $this->database = $database;
     }
 
+    // Show all internships
+    public function index()
+    {
+        $internships = $this->database->all('internships');
+
+        return view('internships.index', compact('internships'));
+    }
+
+    // Show create form
     public function create()
     {
         return view('internships.create');
     }
 
-    public function store()
+    // Save new internship
+    public function store(Request $request)
     {
-        // فعلاً خالی است؛ ذخیره اطلاعات در درس بعدی
+        $this->database->create(
+            'internships',
+            $request->except(['_token', '_method'])
+        );
+
+        return redirect()->route('internships.index');
     }
 
+    // Show one internship
     public function show(string $internship)
     {
-        return view('internships.show');
+        $internshipData = $this->database->find(
+            'internships',
+            (int) $internship
+        );
+
+        abort_if(!$internshipData, 404);
+
+        return view('internships.show', [
+            'internship' => $internshipData
+        ]);
     }
 
+    // Show edit form
     public function edit(string $internship)
     {
-        return view('internships.edit');
+        $internshipData = $this->database->find(
+            'internships',
+            (int) $internship
+        );
+
+        abort_if(!$internshipData, 404);
+
+        return view('internships.edit', [
+            'internship' => $internshipData
+        ]);
     }
 
-    public function update(string $internship)
+    // Update internship
+    public function update(Request $request, string $internship)
     {
-        // فعلاً خالی است؛ به‌روزرسانی در درس بعدی
+        $this->database->update(
+            'internships',
+            (int) $internship,
+            $request->except(['_token', '_method'])
+        );
+
+        return redirect()->route('internships.index');
     }
 
+    // Delete internship
     public function destroy(string $internship)
     {
-        // فعلاً خالی است؛ حذف اطلاعات در درس بعدی
+        $this->database->delete('internships', (int) $internship);
+
+        return redirect()->route('internships.index');
     }
 }

@@ -7,9 +7,53 @@
             "id": 1
         }
     ],
-    "companies": [],
-    "internships": [],
-    "applications": [],
-    "reports": [],
+    "companies": [
+        {
+            "name": "fgg",
+            "email": "hedaytullahrahmani2@gmail.com",
+            "phone": "0792375988",
+            "address": "94C8+QG5",
+            "id": 1
+        },
+        {
+            "name": "FG",
+            "email": "hedaytullahrahmani2@gmail.com",
+            "phone": "۰۷۹۲۳۷۵۹۸۷",
+            "address": "94C8+QG5",
+            "id": 2
+        }
+    ],
+    "internships": [
+        {
+            "title": "1",
+            "company_name": "DE",
+            "location": "kabul",
+            "duration": "4 mah",
+            "description": "dlskskj",
+            "status": "Open",
+            "id": 1
+        }
+    ],
+    "applications": [
+        {
+            "student_name": "Nabi",
+            "internship_title": "2",
+            "email": "hedaytullahrahmani3@gmail.com",
+            "phone": "0792375988",
+            "description": "dhhsopijej",
+            "status": "Approved",
+            "id": 1
+        }
+    ],
+    "reports": [
+        {
+            "title": "1",
+            "type": "Student Report",
+            "date": "2026-11-03",
+            "generated_by": "hghujg",
+            "description": "huiiiiii",
+            "id": 1
+        }
+    ],
     "users": []
 }

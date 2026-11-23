@@ -2,40 +2,90 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\JsonDatabase;
+use Illuminate\Http\Request;
+
 class ApplicationController extends Controller
 {
-    public function index()
+    private JsonDatabase $database;
+
+    public function __construct(JsonDatabase $database)
     {
-        return view('applications.index');
+        $this->database = $database;
     }
 
+    // Show all applications
+    public function index()
+    {
+        $applications = $this->database->all('applications');
+
+        return view('applications.index', compact('applications'));
+    }
+
+    // Show create form
     public function create()
     {
         return view('applications.create');
     }
 
-    public function store()
+    // Save new application
+    public function store(Request $request)
     {
-        // فعلاً خالی است؛ ذخیره اطلاعات در درس بعدی
+        $this->database->create(
+            'applications',
+            $request->except(['_token', '_method'])
+        );
+
+        return redirect()->route('applications.index');
     }
 
+    // Show one application
     public function show(string $application)
     {
-        return view('applications.show');
+        $applicationData = $this->database->find(
+            'applications',
+            (int) $application
+        );
+
+        abort_if(!$applicationData, 404);
+
+        return view('applications.show', [
+            'application' => $applicationData
+        ]);
     }
 
+    // Show edit form
     public function edit(string $application)
     {
-        return view('applications.edit');
+        $applicationData = $this->database->find(
+            'applications',
+            (int) $application
+        );
+
+        abort_if(!$applicationData, 404);
+
+        return view('applications.edit', [
+            'application' => $applicationData
+        ]);
     }
 
-    public function update(string $application)
+    // Update application
+    public function update(Request $request, string $application)
     {
-        // فعلاً خالی است؛ به‌روزرسانی در درس بعدی
+        $this->database->update(
+            'applications',
+            (int) $application,
+            $request->except(['_token', '_method'])
+        );
+
+        return redirect()->route('applications.index');
     }
 
+    // Delete application
     public function destroy(string $application)
     {
-        // فعلاً خالی است؛ حذف اطلاعات در درس بعدی
+        $this->database->delete('applications', (int) $application);
+
+        return redirect()->route('applications.index');
     }
 }

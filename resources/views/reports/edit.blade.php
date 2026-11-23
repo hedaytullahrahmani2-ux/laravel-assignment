@@ -1,48 +1,82 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ویرایش گزارش</title>
 </head>
 <body>
 
     <h1>ویرایش گزارش</h1>
 
-    <form>
+    <form action="{{ route('reports.update', $report['id']) }}"
+          method="POST">
 
-        <label>نام دانشجو:</label>
-        <input type="text" value="احمد احمدی">
-
-        <br><br>
+        @csrf
+        @method('PUT')
 
         <label>عنوان گزارش:</label>
-        <input type="text" value="گزارش کارآموزی توسعه وب">
+        <input type="text" name="title"
+               value="{{ $report['title'] }}" required>
 
         <br><br>
 
-        <label>نام شرکت:</label>
-        <input type="text" value="شرکت فناوری افغانستان">
+        <label>نوع گزارش:</label>
+        <select name="type" required>
 
-        <br><br>
+            <option value="Student Report"
+                {{ $report['type'] == 'Student Report' ? 'selected' : '' }}>
+                گزارش دانشجویان
+            </option>
 
-        <label>توضیحات گزارش:</label>
-        <textarea>در این دوره دانشجو با توسعه وب و طراحی سیستم آشنا شده است.</textarea>
+            <option value="Company Report"
+                {{ $report['type'] == 'Company Report' ? 'selected' : '' }}>
+                گزارش شرکت‌ها
+            </option>
+
+            <option value="Internship Report"
+                {{ $report['type'] == 'Internship Report' ? 'selected' : '' }}>
+                گزارش کارآموزی‌ها
+            </option>
+
+            <option value="Application Report"
+                {{ $report['type'] == 'Application Report' ? 'selected' : '' }}>
+                گزارش درخواست‌ها
+            </option>
+
+            <option value="General Report"
+                {{ $report['type'] == 'General Report' ? 'selected' : '' }}>
+                گزارش عمومی
+            </option>
+
+        </select>
 
         <br><br>
 
         <label>تاریخ گزارش:</label>
-        <input type="date" value="2026-10-07">
+        <input type="date" name="date"
+               value="{{ $report['date'] }}" required>
 
         <br><br>
 
-        <button type="submit">ویرایش گزارش</button>
+        <label>تهیه‌کننده:</label>
+        <input type="text" name="generated_by"
+               value="{{ $report['generated_by'] }}" required>
+
+        <br><br>
+
+        <label>توضیحات:</label>
+        <textarea name="description" required>{{ $report['description'] }}</textarea>
+
+        <br><br>
+
+        <button type="submit">ذخیره تغییرات</button>
 
     </form>
 
     <br>
 
-    <a href="/reports">بازگشت به لیست</a>
+    <a href="{{ route('reports.index') }}">بازگشت به لیست</a>
 
 </body>
 </html>

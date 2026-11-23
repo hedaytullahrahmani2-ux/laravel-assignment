@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -9,12 +10,15 @@
 
     <h1>جزئیات شرکت</h1>
 
-    <p>نام شرکت: شرکت فناوری افغانستان</p>
-    <p>ایمیل: info@example.com</p>
-    <p>شماره تماس: 0700000000</p>
-    <p>آدرس: کابل، افغانستان</p>
+    <p><strong>شماره ID:</strong> {{ $company['id'] }}</p>
+    <p><strong>نام شرکت:</strong> {{ $company['name'] }}</p>
+    <p><strong>ایمیل:</strong> {{ $company['email'] }}</p>
+    <p><strong>شماره تماس:</strong> {{ $company['phone'] }}</p>
+    <p><strong>آدرس:</strong> {{ $company['address'] }}</p>
 
-    <a href="/companies">بازگشت به لیست</a>
+    <br>
+
+    <a href="{{ route('companies.index') }}">بازگشت به لیست شرکت‌ها</a>
 
 </body>
 </html>
